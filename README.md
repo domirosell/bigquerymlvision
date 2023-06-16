@@ -49,6 +49,9 @@ JSON_VALUE(label_annotations.topicality) AS topicality,
 FROM `project_id.dataset_id.table_id_ml_vision_api` ,
 UNNEST(JSON_QUERY_ARRAY(ml_annotate_image_result.label_annotations)) AS label_annotations
 
+Example:
+
+<img width="880" alt="image" src="https://github.com/domirosell/bigquerymlvision/assets/136735618/d991dbf3-9da8-4ce7-b696-77f443fad282">
 
 Provided links for further information:
 https://cloud.google.com/bigquery/docs/working-with-connections - Working with connections
