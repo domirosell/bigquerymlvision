@@ -36,7 +36,7 @@ The object table will be created in the specified project & dataset. In the same
 The connection service account will also need permissions to read the file from the bucket.
 
 
-4. You can know check in BQ the scores returned by the Cloud Vision API in a friendly way
+4. You can know check in BQ the scores returned by the Cloud AI Vision in a friendly way
 
 SELECT
 JSON_VALUE(label_annotations.description) AS description,
