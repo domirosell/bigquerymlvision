@@ -1,5 +1,5 @@
 # bigquerymlvision
-Image annotation by using BQML + Cloud Vision API
+Image annotation by using BQML + Object Tables + Cloud Vision API
 
 
 First you must create a connection and a model in BigQuery, following these steps:
