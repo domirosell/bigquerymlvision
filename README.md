@@ -10,6 +10,8 @@ BigQuery --> Add --> Connections to external data sources:
 Connection type
 BigLake and remote functions (Cloud Resource)
 
+Note that a service account will be created for the connection. Please grant it the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission.
+
 
 2. Create the MODEL. In this example, we'll be using a Remote model provided by GCP (CLOUD_AI_VISION_V1).
 
@@ -30,6 +32,23 @@ Just set these variables properly, upload an image to your bucket and let magic 
  connection_id = '`region_id.connection_id`'  # TO_DO_DEVELOPER
 
 The object table will be created in the specified project & dataset. In the same dataset, the result will be written with suffix _ml_vision_api
+
+The connection service account will also need permissions to read the file from the bucket.
+
+
+4. You can know check in BQ the scores returned by the Cloud Vision API in a friendly way
+
+SELECT
+JSON_VALUE(label_annotations.description) AS description,
+JSON_VALUE(label_annotations.mid) AS mid,
+JSON_VALUE(label_annotations.score) AS score,
+JSON_VALUE(label_annotations.topicality) AS topicality,
+*
+
+
+FROM `project_id.dataset_id.table_id_ml_vision_api` ,
+UNNEST(JSON_QUERY_ARRAY(ml_annotate_image_result.label_annotations)) AS label_annotations
+
 
 Provided links for further information:
 https://cloud.google.com/bigquery/docs/working-with-connections - Working with connections
