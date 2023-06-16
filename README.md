@@ -22,21 +22,21 @@ OPTIONS(REMOTE_SERVICE_TYPE="CLOUD_AI_VISION_V1")
 
 
 3. Create the cloud functions and associate a GCS trigger.
-Different features may be used as vision features, in this example label_detection has been used.
+Different features may be used as vision features, in this example 'label_detection' has been used. Check the links below for more info.
 
-Just set these variables properly, upload an image to your bucket and let magic happen in GCP :-)
+You just need to set these variables properly, upload an image to your bucket and let the magic happen in GCP :-)
 
  project_id = 'project_id' # TO_DO_DEVELOPER
  dataset_id = 'dataset_id'       # TO_DO_DEVELOPER
  model_id = '`project_id.dataset_id.model_id`'  # TO_DO_DEVELOPER
  connection_id = '`region_id.connection_id`'  # TO_DO_DEVELOPER
 
-The object table will be created in the specified project & dataset. In the same dataset, the result will be written with suffix _ml_vision_api
+The object table will be created in the specified project & dataset. In the same dataset, the result will be written in a table with suffix _ml_vision_api
 
-The connection service account will also need permissions to read the file from the bucket.
+The connection service account also needs permissions to read the file from the bucket.
 
 
-4. You can know check in BQ the scores returned by the Cloud AI Vision in a friendly way
+4. You can know check in BQ the scores returned by Cloud AI Vision in a more friendly way
 
 SELECT
 JSON_VALUE(label_annotations.description) AS description,
@@ -49,7 +49,7 @@ JSON_VALUE(label_annotations.topicality) AS topicality,
 FROM `project_id.dataset_id.table_id_ml_vision_api` ,
 UNNEST(JSON_QUERY_ARRAY(ml_annotate_image_result.label_annotations)) AS label_annotations
 
-Example:
+Output example for test image:
 
 <img width="880" alt="image" src="https://github.com/domirosell/bigquerymlvision/assets/136735618/d991dbf3-9da8-4ce7-b696-77f443fad282">
 
