@@ -51,6 +51,9 @@ UNNEST(JSON_QUERY_ARRAY(ml_annotate_image_result.label_annotations)) AS label_an
 
 Output example for test image:
 
+![giraffes_Qx 124](https://github.com/domirosell/bigquerymlvision/assets/136735618/f439f1ff-4e8b-4936-ad3c-84f7b5fd9f9e)
+
+
 <img width="880" alt="image" src="https://github.com/domirosell/bigquerymlvision/assets/136735618/d991dbf3-9da8-4ce7-b696-77f443fad282">
 
 Provided links for further information:
